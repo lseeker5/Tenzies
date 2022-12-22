@@ -36,4 +36,17 @@
 
 .count{
   margin-top: 3%;
+  font-size: large;
+}
+
+.reset{
+  margin-top:5%;
+  width:10%;
+
+}
+
+.buttons{
+  display: flex;
+  width:50%;
+  justify-content: space-between;
 }
