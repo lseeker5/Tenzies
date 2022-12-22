@@ -15,6 +15,8 @@ const[dices,setDices]=React.useState([
 {id:10,locked:false,value:4}
 ])
 
+const[count,setCount]=React.useState(0)
+
 const Dices=dices.map(createDice)
 
 function handleClick(num){
@@ -26,6 +28,20 @@ function handleClick(num){
     }
   }
   setDices(newDices)
+  
+}
+
+
+function rollDice(){
+  const newDices=[...dices]
+  for(let i=0;i<newDices.length;i++){
+    if(newDices[i].locked===false){
+      let newNum =Math.floor(6*Math.random())  
+      newDices[i].value=newNum
+    }
+  }
+  setDices(newDices)
+  setCount(prevCount=>prevCount+1)
 }
 
 function createDice(val){
@@ -50,7 +66,8 @@ function createDice(val){
     <div className="App">
       <h1>TENZIES</h1>
       <div className='allThemDices'>{Dices}</div>
-      
+      <div className='count'>{count}</div>
+      <button className='roll' onClick={rollDice}>ROLL</button>
     </div>
   );
 }
